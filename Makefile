@@ -1,18 +1,23 @@
-CXX = g++
-CXXFLAGS = -g -Wall -IC:\Tools\python\include
+CXXFLAGS = -g -Wall -IC:\Tools\python\include -Iinclude
 LDFLAGS = -LC:\Tools\python\libs -lpython312
-SOURCES = src/main.cpp src/app.cpp src/utils.cpp
-HEADERS = src/app.h src/utils.h
-TARGET = app
+SOURCES = src/main.cpp src/utils.cpp 
+HEADERS = include/utils.h include/luFactorization.h
+TARGET = program
 CLEANUP = rm -f *.o
 
 all: $(TARGET)
 
-$(TARGET): main.o
-	g++ main.o -o app $(CXXFLAGS) $(LDFLAGS)
+$(TARGET): build/main.o
+	g++ build/main.o -o program $(CXXFLAGS) $(LDFLAGS)
 
-main.o: $(SOURCES) $(HEADERS)
-	g++ -c $(SOURCES) $(CXXFLAGS)
+build/main.o: $(SOURCES) $(HEADERS)
+	g++ -c src/main.cpp $(CXXFLAGS) $(LDFLAGS) -o build/main.o
+
+build/utils.o: $(SOURCES) $(HEADERS)
+	g++ -c src/utils.cpp $(CXXFLAGS) $(LDFLAGS) -o build/utils.o
+
+build/luFactorization.o: src/luFactorization.cpp $(HEADERS)
+	g++ -c src/luFactorization.cpp $(CXXFLAGS) $(LDFLAGS) -o build/luFactorization.o
 
 clean:
 	$(CLEANUP)
