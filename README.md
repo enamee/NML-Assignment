@@ -20,8 +20,30 @@ This is a console application, a project which implements various numerical meth
 4. **[Matrix Inversion](README.md#matrix-inversion)**
 
 ## Jacobi Iterative Method
+1. Arrange the given system of linear equations in diagonally dominant form.
+2. set the tolerable error;
+3. Convert the  first equation in terms of first variable , second equation in the term of second variable and so on.
+   for example,
+   `x1=1/a11(b1-a12*x2-a13*x3).`
+   `x2=1/a12(b2-a11*x1-a13*x3).`
+   `x3=1/a13(b3-a11*x1-a12*x2).`
+4. Set the initial guesses for x10,x20,x30 and so on;
+5. Substitute the value of `x10,x20,x30,.......`in equation obtained from step 4 to calculate new values of `x1,x2,x3 and so on`;
+6. Repeat step 5 until `(|x10-x1|)>e `and `(|x20-x2|)>e` and `(|x30-x3|)>e` and so on ;
+7. Print the value of x1,x2,x3 and so on;
 
 ## Gauss-Seidel Iterative Method
+1. Arrange the given system of linear equations in diagonally dominant form.
+2. set the tolerable error;
+3. Convert the  first equation in terms of first variable , second equation in the term of second variable and so on.
+   for example,
+   `x1=1/a11(b1-a12*x2-a13*x3)`.
+    `x2=1/a12(b2-a11*x1-a13*x3)`.
+   `x3=1/a13(b3-a11*x1-a12*x2)`.
+4. Set the initial guesses for `x10,x20,x30 and so on`;
+5. Substitute the value of `x20,x30,.......`in the first  equation obtained from step 4 to calculate new value x1.Then use `x1,x20,x30,......` in second equation to calculate new value of x2 and use `x1,x2,x30,.....` in third equation to calculate  new value of x3  and  so on;
+6. Repeat step 5 until `(|x10-x1|)>e` and `(|x10-x1|)>e` and `(|x10-x1|)>e`;
+7. Print the value of x1,x2,x3 and so on;
 
 ## Gauss Elimination
 # Gauss Elimination
@@ -164,8 +186,28 @@ False position method is the same as Bi-section method with the only difference 
       
 ![alt text](res/false.png)
 ## Secant Method
+1. Define the function as f(x).
+2. Assume initial guesses x1,x2.
+3. Calculate f(x1) and f(x2) and if f(x1)=f(x2) ,   then print "Mathematical Error" and terminate the program.
+4. Determine `x3=x2-(x2-x1)*f(x2)/f(x2)-f(x1)`.
+5. Check if `f(x3)=0`,
+    1. if true , then print the solution x3.
+    2. else replace `x1=x2 and x3=x2`.
+6. Repeat step 3 ,4,5 until `f(x3)=0`.
+
 
 ## Newton-Raphson Method
+1. Define the function as f(x).
+2. Assume initial guesses x0.
+3. Calculate the derivatives of f(x) and define it as f '(x).
+4. Calculate f(x0) and f '(x0) .
+5. Check `if f'(x0)=0` , then then print `"Mathematical Error"` and terminate the program.
+6. Determine `x1=x0-f(x0)/f '(x0)`.
+7. Check if `f(x1)=0`,
+    1. if true then print the solution x1.
+    2. else replace x0=x1.
+8. Repeat step 3 ,4,5 until f(x3)=0.
+
 
 ## Runge-Kutta Method
 `Purpose`: The Runge-Kutta method is a numerical technique used to solve ordinary differential equations (ODEs) of the form:
