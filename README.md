@@ -32,6 +32,9 @@ This is a console application, a project which implements various numerical meth
 6. Repeat step 5 until `(|x10-x1|)>e `and `(|x20-x2|)>e` and `(|x30-x3|)>e` and so on ;
 7. Print the value of x1,x2,x3 and so on;
 
+### The Visual Representation of Jacobi Method:
+![alt text](res/jacobi.png)
+
 ## Gauss-Seidel Iterative Method
 1. Arrange the given system of linear equations in diagonally dominant form.
 2. set the tolerable error;
@@ -44,6 +47,9 @@ This is a console application, a project which implements various numerical meth
 5. Substitute the value of `x20,x30,.......`in the first  equation obtained from step 4 to calculate new value x1.Then use `x1,x20,x30,......` in second equation to calculate new value of x2 and use `x1,x2,x30,.....` in third equation to calculate  new value of x3  and  so on;
 6. Repeat step 5 until `(|x10-x1|)>e` and `(|x10-x1|)>e` and `(|x10-x1|)>e`;
 7. Print the value of x1,x2,x3 and so on;
+
+### The Visual Representation of Guass-Scidel Iterative Method:
+![alt text](res/guass%20sciedel.png)
 
 ## Gauss Elimination
 # Gauss Elimination
@@ -195,6 +201,9 @@ False position method is the same as Bi-section method with the only difference 
     2. else replace `x1=x2 and x3=x2`.
 6. Repeat step 3 ,4,5 until `f(x3)=0`.
 
+### The Visual Representation For Secant Method:
+![alt text](res/Secant.png)
+
 
 ## Newton-Raphson Method
 1. Define the function as f(x).
@@ -207,6 +216,9 @@ False position method is the same as Bi-section method with the only difference 
     1. if true then print the solution x1.
     2. else replace x0=x1.
 8. Repeat step 3 ,4,5 until f(x3)=0.
+
+### The Visual Representation For Newton-Raphson Method:
+![alt text](res/Newton_raphson.png)
 
 
 ## Runge-Kutta Method
