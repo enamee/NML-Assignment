@@ -63,3 +63,56 @@ for(int i=1;i<=n;i++){
 }
 
 }
+void Gauss_seidal(vector<vector<double>>A,int step,int n)
+{
+
+   vector<double>X0(n+1,0);
+
+    vector<double>X(n+1,0);
+    int t =step;
+
+   //ouble err = .000001;
+    int p= 0;
+while (t--) {
+
+
+for(int i=1;i<=n;i++){
+X[i]=(1.0/A[i][i]);
+    double cons=A[i][n+1];
+    double sum=0;
+
+    for(int j=1;j<=n;j++){
+        if(j==i){
+            continue;
+        }
+        sum+=X0[i]*A[i][j];
+    }
+X[i]=X[i]*(cons-sum);
+
+for(int k=1;k<=i;k++){
+    X0[k]=X[k];
+}
+
+}
+
+
+
+
+
+        p++;
+for(int i=1;i<=n;i++)
+         {
+
+           X0[i]=X[i];
+        }
+
+}
+
+
+
+cout<<endl<<endl<<"Steps "<<p<<"\t\t Final Output"<<endl;
+for(int i=1;i<=n;i++){
+    cout<<"X"<<i<<" "<<X[i]<<endl;
+}
+
+}

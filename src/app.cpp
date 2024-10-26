@@ -45,6 +45,21 @@ void appInterface()
     else if (choice == 2)
     {
         // Gauss-Seidel Iterative Method
+         int n,step;
+
+    cout<<"Enter the number of Equations:"<<endl;
+    cin>>n;
+     cout<<"Enter the number of steps"<<endl;
+     cin>>step;
+   vector<vector<double>>A(n+1,vector<double>(n+2));
+     cout<<"Enter the coefficents of the equations"<<endl;
+     for(int i=1;i<=n;i++){
+            for(int j=1;j<=n+1;j++){
+        cin>>A[i][j];
+        }
+     }
+  
+Gauss_seidal(A,step,n);
     }
     else if (choice == 3)
     {
