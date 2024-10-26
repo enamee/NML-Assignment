@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
+#include "include/utils.h"
 using namespace std;
+
+typedef vector<vector<double>> mtrx;
 
 void appInterface() {
     cout << "Select a method" << endl;
@@ -28,6 +31,19 @@ void appInterface() {
         // Gauss Jordan Elimination
     } else if (choice == 5) {
         // LU Factorization
+        cout << "No. of equations: " << endl;
+        int n;
+        cin >> n;
+        mtrx a(n, vector<double>(n+1, 0));
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n+1; j++) {
+                cin >> a[i][j];
+            }
+        }
+        auto res = luFactorize(a);
+        for (int i = 0; i < n; i++) {
+            cout << res[i] << " ";
+        }
     } else if (choice == 6) {
         // Bi-section Method
     } else if (choice == 7) {
