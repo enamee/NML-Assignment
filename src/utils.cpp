@@ -116,3 +116,43 @@ for(int i=1;i<=n;i++){
 }
 
 }
+void Newton_rapson(double a,double b,double c)
+{
+
+
+    double a1;
+
+
+    a1=2*a;
+    double x0=0,x1;
+    double fx,fx1;
+    int step=0;
+    while(true){
+            fx=a*x0*x0+b*x0+c;
+    fx1=a1*x0+b;
+step++;
+    if(fx==0){
+        cout<<"The final answer="<<x0<<endl;
+        return;
+    }
+    if(fx1==0){
+        cout<<"Mathematical Error"<<endl;
+
+        break;
+
+    }
+     x1=x0-(fx/fx1);
+
+    fx=a*x1*x1+b*x1+c;
+    if(fx==0){
+        cout<<"The final answer="<<x1<<endl;
+       return;
+
+    }
+    if(abs(x1-x0)<=.00001){
+        cout<<"The final answer="<<x1<<endl;
+        break;
+
+    }
+    x0=x1;
+    }}

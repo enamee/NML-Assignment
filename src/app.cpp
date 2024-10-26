@@ -104,6 +104,12 @@ Gauss_seidal(A,step,n);
     else if (choice == 9)
     {
         // Newton-Raphson Method
+        cout<<"enter the coefficients of the equation"<<endl;
+  double a,b,c;
+  cin>>a>>b>>c;
+
+
+Newton_rapson(a,b,c);
     }
     else if (choice == 10)
     {
