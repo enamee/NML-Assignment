@@ -8,7 +8,11 @@ CLEANUP = rm -f *.o
 
 all: $(TARGET)
 
-$(TARGET): app.o
-	g++ app.o -o app $(CXXFLAGS) $(LDFLAGS)
+$(TARGET): main.o
+	g++ main.o -o app $(CXXFLAGS) $(LDFLAGS)
 
-app.o: $(SOURCES)
+main.o: $(SOURCES) $(HEADERS)
+	g++ -c $(SOURCES) $(CXXFLAGS)
+
+clean:
+	$(CLEANUP)
