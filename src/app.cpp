@@ -110,6 +110,7 @@ void appInterface()
         int n;
         cin >> n;
         mtrx a(n, vector<double>(n + 1, 0));
+        cout << "Enter the coefficents of the equations" << endl;
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < n + 1; j++)
@@ -126,10 +127,42 @@ void appInterface()
     else if (choice == 6)
     {
         // Bi-section Method
+        int highestPower;
+        cout << "Highest power of x in f(x): ";
+        cin >> highestPower;
+        vector<int> e = vector<int>(highestPower + 1);
+        cout << "Coefficients values (from x^n to x^0): ";
+        for (auto &c : e)
+        {
+            cin >> c;
+        }
+        cout << "Enter the value to search from: ";
+        double start;
+        cin >> start;
+        cout << "Enter tolerance: ";
+        double tolerance;
+        cin >> tolerance;
+        cout << "Approximate root: " << bisection(e, start, tolerance);
     }
     else if (choice == 7)
     {
         // False Position Method
+        int highestPower;
+        cout << "Highest power of x in f(x): ";
+        cin >> highestPower;
+        vector<int> e = vector<int>(highestPower + 1);
+        cout << "Coefficients values (from x^n to x^0): ";
+        for (auto &c : e)
+        {
+            cin >> c;
+        }
+        cout << "Enter the value to search from: ";
+        double start;
+        cin >> start;
+        cout << "Enter tolerance: ";
+        double tolerance;
+        cin >> tolerance;
+        cout << "Approximate root: " << falsePosition(e, start, tolerance);
     }
     else if (choice == 8)
     {

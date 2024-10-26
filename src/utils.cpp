@@ -4,6 +4,24 @@ using namespace std;
 
 typedef vector<vector<double>> mtrx;
 
+double func(vector<int> e, double x) {
+    double res = 0;
+    for (int i=0; i<e.size(); ++i) {
+        res += e[i] * pow(x, e.size()-i-1);
+    }
+    return res;
+}
+
+pair<int, int> getRange(vector<int> e, int start) {
+    int count = 0;
+    for (int i=start; ; i++) {
+        if (func(e, i)*func(e, i+1) <= 0) {
+            return {i, i+1};
+        }
+    }
+    return {NULL, NULL};
+}
+
 vector<double> luFactorize(mtrx a) {
     auto matrixPair = lowerAndUpper(a);
     auto l = matrixPair.first;
@@ -205,4 +223,66 @@ step++;
 
     }
 
+}
+
+double bisection(vector<int> e, double start, double tolerance) {
+    auto range = getRange(e, start);
+    double a = range.first, b = range.second;
+    if (func(e, a) == 0) return a;
+    if (func(e, b) == 0) return b;
+
+    if (func(e, a) * func(e, b) >= 0) {
+        cout << "You have not assumed right a and b\n";
+        return NAN;
+    }
+    double c = a;
+    while (abs((b-a)) >= tolerance) {
+        // Find middle point
+        c = (a+b)/2;
+ 
+        // Check if middle point is root
+        if (func(e, c) == 0.0)
+            break;
+ 
+        // Decide the side to repeat the steps
+        else if (func(e, c)*func(e, a) < 0)
+            b = c;
+        else
+            a = c;
+        // cout << "Approximate root: " << c << endl;
+        // cout << abs(11.099-c) << endl;
+        // cout << abs(b-a) << endl;
+    }
+    return c;
+}
+
+double falsePosition(vector<int> e, double start, double tolerance) {
+    auto range = getRange(e, start);
+    double a = range.first, b = range.second;
+    if (func(e, a) == 0) return a;
+    if (func(e, b) == 0) return b;
+
+    if (func(e, a) * func(e, b) >= 0) {
+        cout << "You have not assumed right a and b\n";
+        return NAN;
+    }
+    double c = a;
+    while (abs((b-a)) >= tolerance) {
+        // Find intersection point
+        c = (a*func(e, b)-b*func(e, a))/(func(e, b)-func(e, a));
+ 
+        // Check if intersection point is root
+        if (func(e, c) == 0.0)
+            break;
+
+        // Decide the side to repeat the steps
+        else if (func(e, c)*func(e, a) < 0)
+            b = c;
+        else
+            a = c;
+        // cout << "Approximate root: " << c << endl;
+        // cout << abs(11.099-c) << endl;
+        // cout << abs(b-a) << endl;
+    }
+    return c;
 }

@@ -9,3 +9,5 @@ void Jacobi(vector<vector<double>>&A,int step,int n);
 void Gauss_seidal(vector<vector<double>>A,int step,int n);
 void Newton_rapson(double a,double b,double c);
 void Secant_method(double a,double b,double c);
+double bisection(vector<int> e, double start, double tolerance);
+double falsePosition(vector<int> e, double start, double tolerance);
