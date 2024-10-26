@@ -100,6 +100,11 @@ Gauss_seidal(A,step,n);
     else if (choice == 8)
     {
         // Secant Method
+         cout<<"enter the coefficients of the equation"<<endl;
+  double a,b,c;
+  cin>>a>>b>>c;
+Secant_method(a,b,c);
+
     }
     else if (choice == 9)
     {

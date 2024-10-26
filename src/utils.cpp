@@ -156,3 +156,53 @@ step++;
     }
     x0=x1;
     }}
+    void Secant_method(double a,double b,double c)
+{
+
+
+    double a1;
+
+
+    //a1=2*a;
+    double x1,x2,x3;
+    cout<<"Enter the initial assumed value of x1 and x2"<<endl;
+    cin>>x1>>x2;
+    double fx1,fx2;
+    int step=0;
+    while(true){
+            fx1=a*x1*x1+b*x1+c;
+    fx2=a*x2*x2+b*x2+c;
+step++;
+    if(fx1==0){
+        cout<<"The final answer="<<x1<<endl;
+        return;
+    }
+     if(fx2==0){
+        cout<<"The final answer="<<x2<<endl;
+        exit(0);
+    }
+    if(abs(fx1-fx2)==0){
+        cout<<"Mathematical Error"<<endl;
+
+        break;
+
+    }
+     x3=x2-(fx2*(x2-x1))/(fx2-fx1);
+
+
+    double fx3=a*x3*x3+b*x3+c;
+    if(fx3==0){
+        cout<<"The final answer="<<x3<<endl;
+       return;
+
+    }
+    if(abs(x3-x2)<=.00001){
+        cout<<"The final answer="<<x3<<endl;
+        break;
+
+    }
+    x1=x2,x2=x3;
+
+    }
+
+}
