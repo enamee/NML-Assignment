@@ -91,12 +91,12 @@ int main()
     else if (choice == 3)
     {
         // Gauss Elimination
-        executePythonScript("Gauss_eli");
+        executePythonScript("gauss_eli");
     }
     else if (choice == 4)
     {
         // Gauss Jordan Elimination
-        executePythonScript("Gauss_Jordan");
+        executePythonScript("gauss_Jordan");
     }
     else if (choice == 5)
     {
@@ -179,12 +179,12 @@ int main()
     else if (choice == 10)
     {
         // Runge-Kutta Method
-        executePythonScript("Runge_kutta");
+        executePythonScript("runge_kutta");
     }
     else if (choice == 11)
     {
         // Matrix Inversion
-        executePythonScript("Matrix_inverse");
+        executePythonScript("matrix_inverse");
     }
     else if (choice == 12)
     {
