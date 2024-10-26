@@ -1,7 +1,7 @@
 CXXFLAGS = -g -Wall -IC:\Tools\python\include -Iinclude
 LDFLAGS = -LC:\Tools\python\libs -lpython312
 SOURCES = src/main.cpp src/utils.cpp 
-HEADERS = include/utils.h include/luFactorization.h
+HEADERS = utils.h luFactorization.h
 TARGET = program
 CLEANUP = rm -f *.o
 

@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <python.h>
-#include "../include/utils.h"
+#include "utils.h"
 using namespace std;
 
 typedef vector<vector<double>> mtrx;
