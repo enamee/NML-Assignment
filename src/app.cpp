@@ -4,7 +4,8 @@ using namespace std;
 
 typedef vector<vector<double>> mtrx;
 
-void appInterface() {
+void appInterface()
+{
     cout << "Select a method" << endl;
     cout << "1. Jacobi Iterative Method" << endl;
     cout << "2. Gauss-Seidel Iterative Method" << endl;
@@ -21,44 +22,114 @@ void appInterface() {
     cout << "Enter your choice: ";
     int choice;
     cin >> choice;
-    if (choice == 1) {
+    if (choice == 1)
+    {
         // Jacobi Iterative Method
-    } else if (choice == 2) {
+        int n, step;
+
+        cout << "Enter the number of Equations:" << endl;
+        cin >> n;
+        cout << "Enter the number of steps" << endl;
+        cin >> step;
+        vector<vector<double>> A(n + 1, vector<double>(n + 2));
+        cout << "Enter the coefficents of the equations" << endl;
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= n + 1; j++)
+            {
+                cin >> A[i][j];
+            }
+        }
+        Jacobi(A,step,n);
+    }
+    else if (choice == 2)
+    {
         // Gauss-Seidel Iterative Method
-    } else if (choice == 3) {
+         int n,step;
+
+    cout<<"Enter the number of Equations:"<<endl;
+    cin>>n;
+     cout<<"Enter the number of steps"<<endl;
+     cin>>step;
+   vector<vector<double>>A(n+1,vector<double>(n+2));
+     cout<<"Enter the coefficents of the equations"<<endl;
+     for(int i=1;i<=n;i++){
+            for(int j=1;j<=n+1;j++){
+        cin>>A[i][j];
+        }
+     }
+  
+Gauss_seidal(A,step,n);
+    }
+    else if (choice == 3)
+    {
         // Gauss Elimination
-    } else if (choice == 4) {
+    }
+    else if (choice == 4)
+    {
         // Gauss Jordan Elimination
-    } else if (choice == 5) {
+    }
+    else if (choice == 5)
+    {
         // LU Factorization
         cout << "No. of equations: " << endl;
         int n;
         cin >> n;
-        mtrx a(n, vector<double>(n+1, 0));
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n+1; j++) {
+        mtrx a(n, vector<double>(n + 1, 0));
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n + 1; j++)
+            {
                 cin >> a[i][j];
             }
         }
         auto res = luFactorize(a);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             cout << res[i] << " ";
         }
-    } else if (choice == 6) {
+    }
+    else if (choice == 6)
+    {
         // Bi-section Method
-    } else if (choice == 7) {
+    }
+    else if (choice == 7)
+    {
         // False Position Method
-    } else if (choice == 8) {
+    }
+    else if (choice == 8)
+    {
         // Secant Method
-    } else if (choice == 9) {
+         cout<<"enter the coefficients of the equation"<<endl;
+  double a,b,c;
+  cin>>a>>b>>c;
+Secant_method(a,b,c);
+
+    }
+    else if (choice == 9)
+    {
         // Newton-Raphson Method
-    } else if (choice == 10) {
+        cout<<"enter the coefficients of the equation"<<endl;
+  double a,b,c;
+  cin>>a>>b>>c;
+
+
+Newton_rapson(a,b,c);
+    }
+    else if (choice == 10)
+    {
         // Runge-Kutta Method
-    } else if (choice == 11) {
+    }
+    else if (choice == 11)
+    {
         // Matrix Inversion
-    } else if (choice == 12) {
+    }
+    else if (choice == 12)
+    {
         // Exit
-    } else {
+    }
+    else
+    {
         cout << "Invalid choice" << endl;
     }
 }
