@@ -146,7 +146,8 @@ The method is based on *The Intermediate Value Theorem* which states that if `f(
     2. `Else If` `f(b)*f(c) < 0` then root lies between `b` and `c`. So we recur `b` and `c`.
     3. `Else` given function doesn’t follow one of assumptions.
 4. Repeat the steps until difference between `a` and `b` is less then a value (very small value).
-
+# The Visual Representation For Bisection Method :
+![alt text](res/bisection.png)
 ## False Position Method
 Like Bi-section method, False Position method is also an approximation method to find the roots of a given equation by repeatedly dividing the interval.  
 False position method is the same as Bi-section method with the only difference is that instead of finding the middle point we find the point that touches the x-axis.
@@ -158,6 +159,10 @@ False position method is the same as Bi-section method with the only difference 
     2. `Else If` `f(b)*f(c) < 0` then root lies between `b` and `c`. So we recur `b` and `c`.
     3. `Else` given function doesn’t follow one of assumptions.
 4. Repeat the steps until difference between `a` and `b` is less then a value (very small value).
+
+# The Visual Representation For False Position  Method :
+      
+![alt text](res/false.png)
 ## Secant Method
 
 ## Newton-Raphson Method
