@@ -1,5 +1,6 @@
 import math
 
+
 def runge_kutta_method(f, x0, y0, x_end, h):
     x = x0
     y = y0

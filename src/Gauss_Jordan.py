@@ -1,27 +1,21 @@
 import numpy as np
 
-def gauss_solver(coeff, rhs):
+
+def gauss_jordan_solver(coeff, rhs):
     aug = np.column_stack((coeff, rhs))
     n = len(rhs)
-    
-    # Step 1: Forward Elimination - Convert to upper triangular form
+
+    # Gauss-Jordan Elimination - Converting to Reduced Row Echelon Form
     for r in range(n):
         if aug[r][r] == 0:
             raise ValueError("Cannot proceed: Zero pivot.")
-        for tr in range(r + 1, n):
-            scale = aug[tr][r] / aug[r][r]
-            aug[tr] -= scale * aug[r]
-    
-    # Step 2: Back Substitution - Solving the upper triangular system
-    sol = np.zeros(n)
-    for r in range(n - 1, -1, -1):
-        if r + 1 < n:
-            sum_prod = np.dot(aug[r][r + 1:n], sol[r + 1:n])
-        else:
-            sum_prod = 0
-        sol[r] = (aug[r][-1] - sum_prod) / aug[r][r]
+        aug[r] = aug[r] / aug[r][r]
+        for tr in range(n):
+            if tr != r:
+                scale = aug[tr][r]
+                aug[tr] -= scale * aug[r]
 
-    return sol
+    return aug[:, -1]
 
 def main():
     var_count = int(input("Enter the number of variables (equations): "))
@@ -40,8 +34,8 @@ def main():
     rhs = np.array(rhs_data, dtype=float)
 
     try:
-        sol = gauss_solver(coeff, rhs)
-        print("\nCalculated Solutions using Gauss Elimination:")
+        sol = gauss_jordan_solver(coeff, rhs)
+        print("\nCalculated Solutions using Gauss-Jordan Elimination:")
         for i, res in enumerate(sol):
             print(f"Variable x{i + 1} = {res}")
     except ValueError as err:

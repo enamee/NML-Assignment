@@ -5,30 +5,23 @@ using namespace std;
 
 typedef vector<vector<double>> mtrx;
 
-void executePythonScript(const string &moduleName)
-{
-    PyObject *pName = PyUnicode_FromString(moduleName.c_str());
-    PyObject *pModule = PyImport_Import(pName);
+void executePythonScript(const string& moduleName) {
+    PyObject* pName = PyUnicode_FromString(moduleName.c_str());
+    PyObject* pModule = PyImport_Import(pName);
     Py_DECREF(pName);
 
-    if (pModule != NULL)
-    {
-        PyObject *pFunc = PyObject_GetAttrString(pModule, "main");
-        if (pFunc && PyCallable_Check(pFunc))
-        {
-            PyObject *pValue = PyObject_CallObject(pFunc, NULL);
+    if (pModule != NULL) {
+        PyObject* pFunc = PyObject_GetAttrString(pModule, "main");
+        if (pFunc && PyCallable_Check(pFunc)) {
+            PyObject* pValue = PyObject_CallObject(pFunc, NULL);
             Py_XDECREF(pValue);
-        }
-        else
-        {
+        } else {
             cerr << "Function 'main' not found in module '" << moduleName << "'" << endl;
             PyErr_Print();
         }
         Py_XDECREF(pFunc);
         Py_DECREF(pModule);
-    }
-    else
-    {
+    } else {
         PyErr_Print();
         cerr << "Failed to load module '" << moduleName << "'" << endl;
     }
@@ -36,6 +29,8 @@ void executePythonScript(const string &moduleName)
 
 int main()
 {
+    Py_Initialize();
+
     cout << "Select a method" << endl;
     cout << "1. Jacobi Iterative Method" << endl;
     cout << "2. Gauss-Seidel Iterative Method" << endl;
@@ -96,12 +91,12 @@ int main()
     else if (choice == 3)
     {
         // Gauss Elimination
-        executePythonScript("utils/Gauss_eli");
+        executePythonScript("Gauss_eli");
     }
     else if (choice == 4)
     {
         // Gauss Jordan Elimination
-        executePythonScript("utils/Gauss_Jordan");
+        executePythonScript("Gauss_Jordan");
     }
     else if (choice == 5)
     {
@@ -184,12 +179,12 @@ int main()
     else if (choice == 10)
     {
         // Runge-Kutta Method
-        executePythonScript("utils/Runge_kutta");
+        executePythonScript("Runge_kutta");
     }
     else if (choice == 11)
     {
         // Matrix Inversion
-        executePythonScript("utils/Matrix_inverse");
+        executePythonScript("Matrix_inverse");
     }
     else if (choice == 12)
     {
@@ -199,6 +194,6 @@ int main()
     {
         cout << "Invalid choice" << endl;
     }
-
+    Py_Finalize();
     return 0;
 }

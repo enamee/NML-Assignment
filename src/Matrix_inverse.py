@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def display_inverse_matrix(matrix):
     try:
         inv_matrix = np.linalg.inv(matrix)

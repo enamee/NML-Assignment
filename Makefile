@@ -11,13 +11,13 @@ $(TARGET): build/main.o build/utils.o build/luFactorization.o
 	g++ build/main.o build/utils.o build/luFactorization.o -o program $(CXXFLAGS) $(LDFLAGS)
 
 build/main.o: $(SOURCES) $(HEADERS)
-	g++ -c src/main.cpp $(CXXFLAGS) -o build/main.o
+	g++ -c src/main.cpp $(CXXFLAGS) $(LDFLAGS) -o build/main.o
 
 build/utils.o: $(SOURCES) $(HEADERS)
-	g++ -c src/utils.cpp $(CXXFLAGS) -o build/utils.o
+	g++ -c src/utils.cpp $(CXXFLAGS) $(LDFLAGS) -o build/utils.o
 
 build/luFactorization.o: src/utils/luFactorization.cpp $(HEADERS)
-	g++ -c src/utils/luFactorization.cpp $(CXXFLAGS) -o build/luFactorization.o
+	g++ -c src/utils/luFactorization.cpp $(CXXFLAGS) $(LDFLAGS) -o build/luFactorization.o
 
 clean:
 	$(CLEANUP)
