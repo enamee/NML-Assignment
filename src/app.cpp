@@ -1,8 +1,38 @@
 #include <bits/stdc++.h>
+#include <python.h>
 #include "include/utils.h"
 using namespace std;
 
 typedef vector<vector<double>> mtrx;
+
+void executePythonScript(const string &moduleName)
+{
+    PyObject *pName = PyUnicode_FromString(moduleName.c_str());
+    PyObject *pModule = PyImport_Import(pName);
+    Py_DECREF(pName);
+
+    if (pModule != NULL)
+    {
+        PyObject *pFunc = PyObject_GetAttrString(pModule, "main");
+        if (pFunc && PyCallable_Check(pFunc))
+        {
+            PyObject *pValue = PyObject_CallObject(pFunc, NULL);
+            Py_XDECREF(pValue);
+        }
+        else
+        {
+            cerr << "Function 'main' not found in module '" << moduleName << "'" << endl;
+            PyErr_Print();
+        }
+        Py_XDECREF(pFunc);
+        Py_DECREF(pModule);
+    }
+    else
+    {
+        PyErr_Print();
+        cerr << "Failed to load module '" << moduleName << "'" << endl;
+    }
+}
 
 void appInterface()
 {
@@ -40,34 +70,38 @@ void appInterface()
                 cin >> A[i][j];
             }
         }
-        Jacobi(A,step,n);
+        Jacobi(A, step, n);
     }
     else if (choice == 2)
     {
         // Gauss-Seidel Iterative Method
-         int n,step;
+        int n, step;
 
-    cout<<"Enter the number of Equations:"<<endl;
-    cin>>n;
-     cout<<"Enter the number of steps"<<endl;
-     cin>>step;
-   vector<vector<double>>A(n+1,vector<double>(n+2));
-     cout<<"Enter the coefficents of the equations"<<endl;
-     for(int i=1;i<=n;i++){
-            for(int j=1;j<=n+1;j++){
-        cin>>A[i][j];
+        cout << "Enter the number of Equations:" << endl;
+        cin >> n;
+        cout << "Enter the number of steps" << endl;
+        cin >> step;
+        vector<vector<double>> A(n + 1, vector<double>(n + 2));
+        cout << "Enter the coefficents of the equations" << endl;
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= n + 1; j++)
+            {
+                cin >> A[i][j];
+            }
         }
-     }
-  
-Gauss_seidal(A,step,n);
+
+        Gauss_seidal(A, step, n);
     }
     else if (choice == 3)
     {
         // Gauss Elimination
+        executePythonScript("utils/Gauss_eli");
     }
     else if (choice == 4)
     {
         // Gauss Jordan Elimination
+        executePythonScript("utils/Gauss_Jordan");
     }
     else if (choice == 5)
     {
@@ -100,29 +134,29 @@ Gauss_seidal(A,step,n);
     else if (choice == 8)
     {
         // Secant Method
-         cout<<"enter the coefficients of the equation"<<endl;
-  double a,b,c;
-  cin>>a>>b>>c;
-Secant_method(a,b,c);
-
+        cout << "enter the coefficients of the equation" << endl;
+        double a, b, c;
+        cin >> a >> b >> c;
+        Secant_method(a, b, c);
     }
     else if (choice == 9)
     {
         // Newton-Raphson Method
-        cout<<"enter the coefficients of the equation"<<endl;
-  double a,b,c;
-  cin>>a>>b>>c;
+        cout << "enter the coefficients of the equation" << endl;
+        double a, b, c;
+        cin >> a >> b >> c;
 
-
-Newton_rapson(a,b,c);
+        Newton_rapson(a, b, c);
     }
     else if (choice == 10)
     {
         // Runge-Kutta Method
+        executePythonScript("utils/Runge_kutta");
     }
     else if (choice == 11)
     {
         // Matrix Inversion
+        executePythonScript("utils/Matrix_inverse");
     }
     else if (choice == 12)
     {
