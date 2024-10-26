@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <python.h>
-#include "utils.h"
+#include "../include/utils.h"
 using namespace std;
 
 typedef vector<vector<double>> mtrx;
@@ -34,7 +34,7 @@ void executePythonScript(const string &moduleName)
     }
 }
 
-void appInterface()
+int main()
 {
     cout << "Select a method" << endl;
     cout << "1. Jacobi Iterative Method" << endl;
@@ -199,4 +199,6 @@ void appInterface()
     {
         cout << "Invalid choice" << endl;
     }
+
+    return 0;
 }

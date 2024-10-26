@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "luFactorization.h"
+#include "../include/luFactorization.h"
 using namespace std;
 
 typedef vector<vector<double>> mtrx;
